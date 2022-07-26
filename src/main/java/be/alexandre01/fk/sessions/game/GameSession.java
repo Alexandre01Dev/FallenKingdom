@@ -85,6 +85,12 @@ public class GameSession extends Session<FKPlayer> {
                 }
             }
         }
+
+        for(Player player : Bukkit.getOnlinePlayers()){
+
+            player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 64));
+        }
+
         instance.setCurrentSession(this);
 
         getListenerManager().registerEvent(new CoreListener());
@@ -111,7 +117,8 @@ public class GameSession extends Session<FKPlayer> {
                 Material.PUMPKIN,
                 Material.SUGAR_CANE,
                 Material.HAY_BLOCK,
-                Material.NETHER_WARTS
+                Material.NETHER_WARTS,
+                Material.IRON_BLOCK
         };
         List<Material> materials = Arrays.asList(m);
         Bukkit.getPluginManager().registerEvents(new Listener(){

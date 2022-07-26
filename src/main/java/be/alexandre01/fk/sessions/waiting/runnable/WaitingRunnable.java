@@ -16,7 +16,7 @@ public class WaitingRunnable implements Runnable {
     @Override
     public void run() {
         for (FKPlayer player : session.getPlayers()) {
-            player.sendActionBar("§7§lEn attentes de tout le monde... §cC'est long §e:D");
+            player.sendActionBar("§7§lEn attente de tout le monde... §cC'est long §e:D");
         }
     }
 }

@@ -1,6 +1,8 @@
 package be.alexandre01.fk.sessions.game.damages;
 
+import be.alexandre01.fk.FKPlugin;
 import be.alexandre01.fk.players.FKPlayer;
+import be.alexandre01.fk.sessions.waiting.WaitingSession;
 import be.alexandre01.universal.server.events.factories.IEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EnderCrystal;
@@ -22,8 +24,14 @@ public class DamageByEntity implements Listener {
     public void onEvent(EntityDamageByEntityEvent event) {
         if(event.getDamager() == null) return;
 
+      /*  if(FKPlugin.instance.getWaitingSession() == universalDamage.getPlugin().getWaitingSession("WaitingSession")){
+            event.setCancelled(true);
+            return;
+        }*/
+
         if (event.getEntity() instanceof Player) {
             FKPlayer player = universalDamage.getPlugin().getCustomPlayer((Player) event.getEntity());
+
 
 
             if(player.getTeam() == null){

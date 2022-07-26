@@ -31,7 +31,7 @@ public class FKPlayer extends BasePlayer {
     private final ArrayList<Leave> leaves = new ArrayList<Leave>();
     public final String[] bg = {"§b§l OUI !","§e§lPEUT-ETRE","§cGIGA CHAD","§7§lAH QUE NON !"};
     @Getter final String[] customKill = new String[]{
-            "§7Aie ! §c%attacker% §7as tordu le coup de §4%victime%",
+            "§7Aie ! §c%attacker% §7as tordu le coup de §4%victim%",
             "§4%victim% §7a fait une grise d'angoisse, faute à §c%attacker%",
             "§4%victim% §7a été tué par §c%attacker%",
             "§4%victim% §7s'est fait croqué par §c%attacker%",

@@ -25,10 +25,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Creature;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -115,6 +117,10 @@ public class WaitingSession extends Session<FKPlayer> {
             for (int i = 0; i < getPlayers().size(); i++) {
                 removePlayer(getPlayers().get(i));
             }
+            for(Player player : Bukkit.getOnlinePlayers()){
+
+                player.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 64));
+            }
 
         }
 
@@ -153,6 +159,7 @@ public class WaitingSession extends Session<FKPlayer> {
 
 
         System.out.println("Le joueur " + player.getName() + " a rejoint la partie.");
+
 
 
     }

@@ -2,6 +2,8 @@ package be.alexandre01.fk.sessions.game.damages;
 
 import be.alexandre01.fk.FKPlugin;
 import be.alexandre01.fk.players.FKPlayer;
+import be.alexandre01.fk.sessions.game.GameSession;
+import be.alexandre01.fk.sessions.waiting.WaitingSession;
 import be.alexandre01.fk.teams.Team;
 import be.alexandre01.universal.server.SpigotPlugin;
 import lombok.Getter;
@@ -84,6 +86,8 @@ public class UniversalDamage {
 
     public void onDamage(Player player, Player damager){
         lastDamager.put(player, damager);
+
+
 
     }
 
