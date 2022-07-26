@@ -35,7 +35,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.*;
 
 public class WaitingSession extends Session<FKPlayer> {
-    String[] customMessage = new String[]{"§e§nOn l'attendait tous !", "§7§nIl ne pouvait pas dépécher un peu ?", "§eLe voilà enfin !", "§cIl est §aprésent !","§cIl est là pour vous donner une raclée","§c§l§nIl va vous pulvériser !","§5§l§nUne aura menaçante dégage de lui.","§3§nIl est un peu timide, soutenez le.","§4§nNe le faites pas cabler","§4§nTape ou il te tape.", "§9Lui ça se voit il est abo a OtaquinTV sur §dtiktok", "§6"};
+    String[] customMessage = new String[]{"§e§nOn l'attendait tous !", "§7§nIl ne pouvait pas dépécher un peu ?", "§eLe voilà enfin !", "§cIl est §aprésent !","§cIl est là pour vous donner une raclée","§c§l§nIl va vous pulvériser !","§5§l§nUne aura menaçante dégage de lui.","§3§nIl est un peu timide, soutenez le.","§4§nNe le faites pas cabler","§4§nTape ou il te tape.", "§9Lui ça se voit il est abo a OtaquinTV sur §dtiktok"};
 
     @Getter TeamSelector teamSelector;
 
@@ -70,7 +70,6 @@ public class WaitingSession extends Session<FKPlayer> {
         getListenerManager().registerEvent(new IEvent<CreatureSpawnEvent>() {
             @Override
             public void onEvent(CreatureSpawnEvent event) {
-                System.out.println("Spawn "+event.getEntity().getType());
                 if(isStarted()){
                     event.setCancelled(true);
                 }

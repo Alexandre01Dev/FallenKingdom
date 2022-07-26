@@ -17,25 +17,28 @@ public class TargetRunnable extends BukkitRunnable {
     public TargetRunnable() {
 
     }
+
     @Override
     public void run() {
-        if(targetters.isEmpty()) {
+        if (targetters.isEmpty()) {
             return;
         }
 
-        for(Creature creature : targetters) {
-            if(creature.getTarget() == null) {
+        for (int i = 0; i < targetters.size(); i++) {
+            Creature creature = targetters.get(i);
+            if (creature.getTarget() == null || creature.isDead()) {
                 targetters.remove(creature);
                 System.out.println("Removed targetter");
                 continue;
             }
 
-            System.out.println("Targetting " + creature.getTarget().getName());
-            if(Base.isInBase(creature.getTarget().getLocation())) {
 
+            if (Base.isInBase(creature.getTarget().getLocation())) {
                 creature.setTarget(null);
             }
         }
-
     }
+
+
 }
+

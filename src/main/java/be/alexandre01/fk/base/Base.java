@@ -2,6 +2,7 @@ package be.alexandre01.fk.base;
 
 import be.alexandre01.fk.FKPlugin;
 import be.alexandre01.fk.base.core.Core;
+import be.alexandre01.fk.base.minerals.OreGeneration;
 import be.alexandre01.fk.teams.Team;
 import be.alexandre01.universal.server.utils.locations.Cuboid;
 import be.alexandre01.universal.server.utils.locations.Region;
@@ -25,6 +26,7 @@ public class Base {
     @Getter String name;
     @Getter @Setter
     Team team;
+    OreGeneration oreGeneration;
 
     public Base(Region region, Location location,Location coreSpawn, String name) {
         this.region = region;
@@ -35,13 +37,17 @@ public class Base {
         FKPlugin.instance.getBases().add(this);
 
         this.core = new Core(this);
+
+
+        oreGeneration = new OreGeneration();
+
+        oreGeneration.generate(region,location);
     }
 
 
 
 
     public boolean isIn(Location location) {
-        System.out.println(region.getMinX() + " " + region.getMaxX() + " " + region.getMinZ() + " " + region.getMaxZ());
         return region.contains(location);
     }
 

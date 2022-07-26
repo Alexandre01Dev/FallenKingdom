@@ -52,11 +52,9 @@ public class FKPlayer extends BasePlayer {
         super(player);
 
         int i = (int) (Math.random() * 100);
-        System.out.println(i);
 
         if(i < 70){
             bgFinal = bg[0];
-            System.out.println("HERE >"+ i);
         }else if(i < 90) {
             bgFinal = bg[1];
         }else if(i < 97) {
@@ -67,7 +65,9 @@ public class FKPlayer extends BasePlayer {
         whenLeave(new Leave() {
             @Override
             public void doWhen(FKPlayer player) {
-                player.getTeam().removePlayer(player);
+                if(player.getTeam() != null){
+                    player.getTeam().removePlayer(player);
+                }
                 joins.clear();
                 leaves.clear();
             }

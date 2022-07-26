@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -83,6 +84,7 @@ public class UniversalDamage {
 
     public void onDamage(Player player, Player damager){
         lastDamager.put(player, damager);
+
     }
 
     public Player getLastDamager(Player player){

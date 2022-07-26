@@ -33,6 +33,15 @@ public class CoreListener extends IEvent<EntityDamageByEntityEvent> {
             if(event.getEntity() instanceof EnderCrystal){
                 Core core = FKPlugin.instance.getGameSession().getCores().get(event.getEntity());
                 if(core != null){
+                    FKPlayer player = FKPlugin.instance.getGameSession().getCustomPlayer((Player) event.getDamager());
+                    if(player.getTeam() == null){
+                        event.setCancelled(true);
+                        return;
+                    }
+                    if(player.getTeam() == core.getBase().getTeam()){
+                        event.setCancelled(true);
+                        return;
+                    }
                     core.setDamage(event.getFinalDamage());
 
                     if(core.health > 0){
