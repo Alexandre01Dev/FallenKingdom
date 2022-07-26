@@ -42,7 +42,7 @@ public class CoreListener extends IEvent<EntityDamageByEntityEvent> {
                         event.setCancelled(true);
                         return;
                     }
-                    core.setDamage(event.getFinalDamage());
+                    core.setDamage();
 
                     if(core.health > 0){
                         event.setCancelled(true);

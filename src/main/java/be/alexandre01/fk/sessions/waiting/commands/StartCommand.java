@@ -15,7 +15,7 @@ public class StartCommand extends Command {
 
     @Override
     public boolean execute(CommandSender sender, String msg, String[] args) {
-
+        if(!sender.isOp())  return false;
         if(used) return false;
 
         if(args.length < 1){
@@ -26,8 +26,8 @@ public class StartCommand extends Command {
             if(args[0].equalsIgnoreCase("force")){
                 WaitingSession waitingSession = FKPlugin.instance.getWaitingSession();
                 waitingSession.finish();
+                used = true;
             }
-            used = true;
         }
         return false;
     }

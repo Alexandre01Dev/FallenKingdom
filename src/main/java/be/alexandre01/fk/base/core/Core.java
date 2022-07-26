@@ -56,8 +56,8 @@ public class Core {
 
 
 
-    public void setDamage(double damage){
-        this.health -= damage;
+    public void setDamage(){
+        this.health -= 1;
         enderCrystal.setCustomName("§F§LVIE: §d" + health + "/500");
       //  armorStand.setCustomName("§F§LVIE: §d" + health + "/500");
         bossBar.refresh(health,base.getTeam().getColor());

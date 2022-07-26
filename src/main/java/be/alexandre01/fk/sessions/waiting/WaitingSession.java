@@ -108,7 +108,6 @@ public class WaitingSession extends Session<FKPlayer> {
         Teams teams = instance.getTeams();
         autoAddAll();
         for(Team team : teams.getTeams()){
-            System.out.println(team.getColorName());
             team.getPlayers().forEach(gameSession::addPlayer);
         }
 

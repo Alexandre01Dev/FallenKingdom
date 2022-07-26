@@ -18,9 +18,7 @@ public class DamageByCause implements Listener {
     public void onEvent(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
-            Bukkit.broadcastMessage(""+event.getDamage());
             if((player.getHealth()-event.getFinalDamage()) <= 0){
-                System.out.println("Damage By Cause " + this);
                 universalDamage.onKill(player);
                 player.setHealth(20);
                 event.setCancelled(true);

@@ -25,6 +25,7 @@ public class DamageByEntity implements Listener {
         if (event.getEntity() instanceof Player) {
             FKPlayer player = universalDamage.getPlugin().getCustomPlayer((Player) event.getEntity());
 
+
             if(player.getTeam() == null){
                 event.setCancelled(true);
                 return;
@@ -32,7 +33,7 @@ public class DamageByEntity implements Listener {
             if (event.getDamager() instanceof Player) {
 
                 FKPlayer damager = universalDamage.getPlugin().getCustomPlayer((Player) event.getDamager());
-                if(universalDamage.getPlugin().getGameSession().getDayTime().getDay() > 1){
+                if(universalDamage.getPlugin().getGameSession().getDayTime().getDay() == 1){
                     damager.getPlayer().sendMessage("§cTu ne peux pas encore attaquer, calmos s'il te plait.");
                     event.setCancelled(true);
                     return;
@@ -51,7 +52,6 @@ public class DamageByEntity implements Listener {
             }
 
 
-            System.out.println(event.getFinalDamage());
             if ((player.getHealth() - event.getFinalDamage()) <= 0) {
                 universalDamage.onKill(player);
                 player.setHealth(20);
