@@ -22,12 +22,14 @@ public class DamageByEntity implements Listener {
 
     @EventHandler
     public void onEvent(EntityDamageByEntityEvent event) {
+        FKPlugin plugin = FKPlugin.instance;
+        if(plugin.getWaitingSession().isStarted()){
+            event.setCancelled(true);
+        }
+
         if(event.getDamager() == null) return;
 
-      /*  if(FKPlugin.instance.getWaitingSession() == universalDamage.getPlugin().getWaitingSession("WaitingSession")){
-            event.setCancelled(true);
-            return;
-        }*/
+
 
         if (event.getEntity() instanceof Player) {
             FKPlayer player = universalDamage.getPlugin().getCustomPlayer((Player) event.getEntity());

@@ -47,8 +47,18 @@ public class UniversalDamage {
                 player.getWorld().dropItem(player.getLocation(), itemStack);
             }
         }
-
+    /*    for(ItemStack is : player.getInventory().getArmorContents()){
+            if(is != null){
+                player.getWorld().dropItem(player.getLocation(), is);
+            }
+        }
+*/
         player.getInventory().clear();
+     /*   player.getInventory().setHelmet(null);
+        player.getInventory().setChestplate(null);
+        player.getInventory().setLeggings(null);
+        player.getInventory().setBoots(null);
+       */
 
         if(fkPlayer.getTeam().getBase().getCore().isDead()){
             fkPlayer.getTeam().getLastPlayers().remove(fkPlayer);
@@ -80,6 +90,7 @@ public class UniversalDamage {
                 player.teleport(instance.getGameSession().safeLoc(fkPlayer.getTeam().getBase().getSpawn()));
 
                 player.setGameMode(GameMode.SURVIVAL);
+
             }
         }.runTaskLater(SpigotPlugin.getInstance(), 20*5);
     }

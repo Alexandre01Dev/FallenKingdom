@@ -73,5 +73,9 @@ public class Team {
             Inventory inventory = teamSelector.getInv();
             teamSelector.generateLores(inventory.getItem(teamSelector.getTeams().getTeams().indexOf(this)), this);
         }
+
+        if(player.getTeam() != null && player.getTeam().getPlayers().size() == 0){
+            player.getTeam().eliminate();
+        }
     }
 }
