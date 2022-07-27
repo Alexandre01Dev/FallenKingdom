@@ -1,6 +1,7 @@
 package be.alexandre01.fk.players;
 
 import be.alexandre01.fk.FKPlugin;
+import be.alexandre01.fk.sessions.game.GameSession;
 import be.alexandre01.fk.sessions.waiting.WaitingSession;
 import be.alexandre01.fk.teams.Team;
 import be.alexandre01.fk.teams.waiting.inventories.TeamSelector;
@@ -65,7 +66,11 @@ public class FKPlayer extends BasePlayer {
         whenLeave(new Leave() {
             @Override
             public void doWhen(FKPlayer player) {
+
                 if(player.getTeam() != null){
+                    if(FKPlugin.instance.getCurrentSession() instanceof GameSession){
+
+                    }
                     player.getTeam().removePlayer(player);
                 }
                 joins.clear();

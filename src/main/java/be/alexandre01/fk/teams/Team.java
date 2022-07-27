@@ -6,16 +6,19 @@ import be.alexandre01.fk.players.FKPlayer;
 import be.alexandre01.fk.teams.waiting.inventories.TeamSelector;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 @Getter
 public class Team {
+    private final static HashMap<UUID,Team> teamsRevive = new HashMap<>();
     public final ItemStack colorItem;
     public final String colorName;
 
@@ -47,8 +50,31 @@ public class Team {
         this.color = color;
     }
 
-    public void eliminate(){
+    public void eliminate(FKPlayer fkPlayer) {
+        if(getBase().getCore().isDead()){
+            getLastPlayers().remove(fkPlayer);
 
+            if(getLastPlayers().isEmpty()){
+                Bukkit.broadcastMessage(getMessageOfLose());
+                setDead(true);
+                int i = 0;
+                Team t = null;
+                for(Team team : FKPlugin.instance.getTeams().getTeams()){
+                    if(!team.isDead()){
+                        i++;
+                        t = team;
+                    }
+                }
+                if(i == 1){
+                    if(t != null){
+                        Bukkit.broadcastMessage(t.getMessageOfWin());
+                    }else {
+                        Bukkit.broadcastMessage("§c§lFK Universe §7: §c§lEgalité");
+                    }
+                }
+            }
+            return;
+        }
     }
 
     public void addPlayer(FKPlayer player){
@@ -74,8 +100,8 @@ public class Team {
             teamSelector.generateLores(inventory.getItem(teamSelector.getTeams().getTeams().indexOf(this)), this);
         }
 
-        if(player.getTeam() != null && player.getTeam().getPlayers().size() == 0){
-            player.getTeam().eliminate();
+        if(player.getTeam() != null && player.getTeam().getLastPlayers().size() == 0){
+           eliminate(player);
         }
     }
 }

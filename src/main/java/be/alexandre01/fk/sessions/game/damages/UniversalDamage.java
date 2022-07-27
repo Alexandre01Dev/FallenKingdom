@@ -47,18 +47,22 @@ public class UniversalDamage {
                 player.getWorld().dropItem(player.getLocation(), itemStack);
             }
         }
-    /*    for(ItemStack is : player.getInventory().getArmorContents()){
-            if(is != null){
-                player.getWorld().dropItem(player.getLocation(), is);
+
+        if(player.getInventory().getArmorContents() != null){
+            for (ItemStack itemStack : player.getInventory().getArmorContents()) {
+                if(itemStack != null){
+                    player.getWorld().dropItem(player.getLocation(), itemStack);
+                }
             }
         }
-*/
+
+
         player.getInventory().clear();
-     /*   player.getInventory().setHelmet(null);
+        player.getInventory().setHelmet(null);
         player.getInventory().setChestplate(null);
         player.getInventory().setLeggings(null);
         player.getInventory().setBoots(null);
-       */
+
 
         if(fkPlayer.getTeam().getBase().getCore().isDead()){
             fkPlayer.getTeam().getLastPlayers().remove(fkPlayer);
@@ -97,9 +101,6 @@ public class UniversalDamage {
 
     public void onDamage(Player player, Player damager){
         lastDamager.put(player, damager);
-
-
-
     }
 
     public Player getLastDamager(Player player){

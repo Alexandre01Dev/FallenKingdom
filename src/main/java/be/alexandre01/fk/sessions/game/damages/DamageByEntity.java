@@ -23,9 +23,7 @@ public class DamageByEntity implements Listener {
     @EventHandler
     public void onEvent(EntityDamageByEntityEvent event) {
         FKPlugin plugin = FKPlugin.instance;
-        if(plugin.getWaitingSession().isStarted()){
-            event.setCancelled(true);
-        }
+
 
         if(event.getDamager() == null) return;
 
@@ -43,14 +41,15 @@ public class DamageByEntity implements Listener {
             if (event.getDamager() instanceof Player) {
 
                 FKPlayer damager = universalDamage.getPlugin().getCustomPlayer((Player) event.getDamager());
+
+                if(player.getTeam() == damager.getTeam()){
+                    event.setCancelled(true);
+                    return; 
+                }
                 if(universalDamage.getPlugin().getGameSession().getDayTime().getDay() == 1){
                     damager.getPlayer().sendMessage("§cTu ne peux pas encore attaquer, calmos s'il te plait.");
                     event.setCancelled(true);
                     return;
-                }
-                if(player.getTeam() == damager.getTeam()){
-                    event.setCancelled(true);
-                    return; 
                 }
                 universalDamage.onDamage(player, damager);
             }

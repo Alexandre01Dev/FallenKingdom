@@ -173,8 +173,8 @@ public class GameSession extends Session<FKPlayer> {
             }
         });
 
-        getListenerManager().registerEvent(new IEvent<PlayerInteractEvent>() {
-            @Override
+       Bukkit.getPluginManager().registerEvents(new Listener() {
+            @EventHandler
             public void onEvent(PlayerInteractEvent event) {
                 FKPlayer fkPlayer = getCustomPlayer(event.getPlayer());
                 if (fkPlayer.getTeam() == null) return;
@@ -188,10 +188,18 @@ public class GameSession extends Session<FKPlayer> {
                 }
 
                 if (Base.isInBase(loc) && !fkPlayer.getTeam().getBase().isIn(loc)) {
+                    if(getDayTime().getDay() >= 3){
+                        if(event.getItem() != null){
+                            if(event.getItem().getType() == Material.TNT){
+                                return;
+                            }
+                        }
+
+                    }
                     event.setCancelled(true);
                 }
             }
-        });
+        },getSpigotPlugin());
 
         getListenerManager().registerEvent(new IEvent<EntityDamageByEntityEvent>() {
             @Override
@@ -309,12 +317,17 @@ public class GameSession extends Session<FKPlayer> {
 
     @Override
     public void onAddPlayer(FKPlayer player) {
-
         if (player.getTeam() != null) {
             if (player.getTeam().getBase() != null) {
                 Base base = player.getTeam().getBase();
                 player.teleport(safeLoc(base.getSpawn()));
+                player.setHealth(20);
+                player.setFoodLevel(20);
                 player.getInventory().clear();
+                player.getInventory().setHelmet(null);
+                player.getInventory().setChestplate(null);
+                player.getInventory().setLeggings(null);
+                player.getInventory().setBoots(null);
             }
         } else {
             removePlayer(player);

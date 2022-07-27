@@ -27,9 +27,13 @@ import org.bukkit.Material;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -68,7 +72,22 @@ public class WaitingSession extends Session<FKPlayer> {
         base.registerCommand("start", new StartCommand("start"));
         base.registerCommand("force", new ForceTeam("force",this));
 
-        getListenerManager().registerEvent(new CancelAllDamage(this));
+        Bukkit.getPluginManager().registerEvents(new Listener(){
+            @EventHandler
+            public void onDamage(EntityDamageEvent e){
+                if(isStarted()){
+                    e.setCancelled(true);
+                }
+            }
+        },getSpigotPlugin());
+        Bukkit.getPluginManager().registerEvents(new Listener(){
+            @EventHandler
+            public void onDamage(PlayerInteractEvent e){
+                if(isStarted()){
+                    e.setCancelled(true);
+                }
+            }
+        },getSpigotPlugin());
         getListenerManager().registerEvent(new IEvent<CreatureSpawnEvent>() {
             @Override
             public void onEvent(CreatureSpawnEvent event) {
