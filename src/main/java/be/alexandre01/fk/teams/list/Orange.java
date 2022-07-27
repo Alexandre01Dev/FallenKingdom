@@ -11,6 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class Orange extends Team {
     public Orange(Base base, Teams teams) {
-        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.ORANGE).build(false), "§6Orange", ChatColor.GOLD,"On attendeait rien d'eux, mais ils ont gagnés", "La récolte ne s'est pas bien passé, les oranges sont éliminés !" ,base,teams);
+        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.ORANGE).build(false), "§6Orange", ChatColor.GOLD,"§aOn attendeait rien §6d'eux§e, mais ils §6§lont gagnés", "La récolte ne s'est pas bien passé, les oranges sont éliminés !" ,base,teams);
     }
 }

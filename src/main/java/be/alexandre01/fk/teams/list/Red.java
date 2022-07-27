@@ -11,6 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class Red extends Team {
     public Red(Base base, Teams teams) {
-        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.RED).build(false), "§cRouge", ChatColor.RED,"Rouge de colère, ils détruisirent leurs énemies !", "Carton pour les rouges ! Ils sont désormais éliminés !",base,teams);
+        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.RED).build(false), "§cRouge", ChatColor.RED,"§4Rouge de colère§e, §4§lils détruisirent leurs énemies !", "§eCarton pour §4les rouges §e! §4§lIls sont désormais éliminés !",base,teams);
     }
 }

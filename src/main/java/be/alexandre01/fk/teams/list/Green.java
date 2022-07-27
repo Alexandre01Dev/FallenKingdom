@@ -11,6 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class Green extends Team {
     public Green(Base base, Teams teams) {
-        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.GREEN).build(false), "§aVert", ChatColor.GREEN,"Y en a qui mangerons des brocolis ce soir, les verts ont gagnés", "On en connait certains qui sont vert de jalousie, ils sont désormais éliminés !",base,teams);
+        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.GREEN).build(false), "§aVert", ChatColor.GREEN,"§eY en a qui mangerons des §abrocolis §ece soir, les §a§lverts ont gagnés !", "§eOn en connait certains qui sont §avert §ede jalousie, ils sont §a§ldésormais éliminés !",base,teams);
     }
 }

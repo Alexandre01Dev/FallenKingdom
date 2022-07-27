@@ -12,6 +12,6 @@ import org.bukkit.inventory.ItemStack;
 public class Blue extends Team {
 
     public Blue(Base base, Teams teams) {
-        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.BLUE).build(false), "§3Bleu", ChatColor.BLUE, "Ils ont eu une peur bleu mais ils ont gagné !", "Les bleu on été cuisiné en cordon bleu ! Ils sont désormais éliminés !",base,teams);
+        super(new ItemBuilder(Material.WOOL).setWoolColor(DyeColor.BLUE).build(false), "§3Bleu", ChatColor.BLUE, "§eIls ont eu une peur §bbleu §emais ils ont §b§lgagné !", "§eLes §bbleu §eon été cuisiné en cordon §bbleu §e! Ils sont §b§ldésormais éliminés !",base,teams);
     }
 }
