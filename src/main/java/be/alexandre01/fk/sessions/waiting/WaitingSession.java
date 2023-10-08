@@ -102,6 +102,8 @@ public class WaitingSession extends Session<FKPlayer> {
         getListenerManager().registerEvent(new CancelDropInventory(this));
         getListenerManager().registerEvent(new CancelClickInventory(this));
 
+
+
         getListenerManager().registerEvent(new IEvent<EntityTargetLivingEntityEvent>() {
             @Override
             public void onEvent(EntityTargetLivingEntityEvent event) {
@@ -175,12 +177,7 @@ public class WaitingSession extends Session<FKPlayer> {
         player.setFoodLevel(20);
         player.setSaturation(20);
 
-
-
         System.out.println("Le joueur " + player.getName() + " a rejoint la partie.");
-
-
-
     }
 
     @Override

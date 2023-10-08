@@ -28,7 +28,6 @@ public class TargetRunnable extends BukkitRunnable {
             Creature creature = targetters.get(i);
             if (creature.getTarget() == null || creature.isDead()) {
                 targetters.remove(creature);
-                System.out.println("Removed targetter");
                 continue;
             }
 

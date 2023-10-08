@@ -5,6 +5,7 @@ import be.alexandre01.fk.base.Base;
 import be.alexandre01.fk.players.FKPlayer;
 import be.alexandre01.fk.teams.Team;
 import be.alexandre01.universal.server.packets.ui.scoreboard.ScoreboardImpl;
+import be.alexandre01.universal.server.session.inventory.stuff.Stuff;
 
 import java.util.ArrayList;
 import java.util.List;

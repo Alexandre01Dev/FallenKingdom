@@ -14,6 +14,12 @@ import be.alexandre01.fk.teams.Teams;
 import be.alexandre01.universal.config.auto.AutoConfig;
 import be.alexandre01.universal.server.SpigotPlugin;
 import be.alexandre01.universal.server.events.factories.IEvent;
+import be.alexandre01.universal.server.packets.npc.NPC;
+import be.alexandre01.universal.server.packets.npc.type.NPCHuman;
+import be.alexandre01.universal.server.packets.npc.type.NPCUniversalEntity;
+import be.alexandre01.universal.server.packets.skin.SkinData;
+import be.alexandre01.universal.server.packets.skin.SkinFactory;
+import be.alexandre01.universal.server.packets.skin.SkinPlayer;
 import be.alexandre01.universal.server.packets.ui.scoreboard.PersonalScoreboard;
 import be.alexandre01.universal.server.packets.ui.scoreboard.ScoreboardImpl;
 import be.alexandre01.universal.server.session.Session;
@@ -62,8 +68,6 @@ public class FKPlugin extends Session<FKPlayer> {
         super("FKPlugin", false);
         autoConfig = new AutoConfig("FallenKingdom.yml",getSpigotPlugin());
         autoConfig.setDefaultLocs("Spawn","BlueCore","BlueCuboid1","BlueCuboid2","BlueSpawn","RedCore","RedCuboid1","RedCuboid2","RedSpawn","OrangeCore","OrangeCuboid1","OrangeCuboid2","OrangeSpawn","BlueCore","BlueCuboid1","BlueCuboid2","GreenCore","GreenCuboid1","GreenCuboid2","GreenSpawn");
-
-
     }
 
     @Override
@@ -143,6 +147,9 @@ public class FKPlugin extends Session<FKPlayer> {
         showScoreboard(player);
 
         getSpigotPlugin().getScoreboardManager().onLogin(player);
+
+        NPC npc = new NPC("name",player.getLocation());
+        NPCHuman human = (NPCHuman) npc.get(player);
     }
 
     @Override

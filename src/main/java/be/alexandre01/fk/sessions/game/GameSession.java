@@ -23,6 +23,7 @@ import lombok.Getter;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.*;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -137,6 +138,8 @@ public class GameSession extends Session<FKPlayer> {
                 }
             }
         },getSpigotPlugin());
+
+
        Bukkit.getPluginManager().registerEvents(new Listener() {
            @EventHandler
            public void onEvent(BlockPlaceEvent event) {

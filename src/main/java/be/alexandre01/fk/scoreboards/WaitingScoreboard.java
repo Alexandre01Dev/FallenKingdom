@@ -22,12 +22,9 @@ public class WaitingScoreboard extends ScoreboardImpl<FKPlayer> {
 
     @Override
     protected void reloadData() {
-
         if(getPlayer().getTeam() != null){
             team = getPlayer().getTeam().getColorName();
         }
-
-
     }
 
     @Override

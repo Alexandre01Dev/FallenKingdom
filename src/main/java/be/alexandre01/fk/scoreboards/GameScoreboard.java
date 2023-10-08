@@ -42,7 +42,6 @@ public class GameScoreboard extends ScoreboardImpl<FKPlayer> {
 
     @Override
     protected void reloadData() {
-
         time = dayTime.getTime();
         day = dayTime.getDay();
         Team t = getPlayer().getTeam();
